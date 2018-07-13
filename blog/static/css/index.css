@@ -1,51 +1,181 @@
+/*
+* — page header and menu bars —
+*/
 .page-header {
-    background-color: #ff9400;
+    background-color: #0A94FE;
     margin-top: 0;
-    padding: 20px 20px 20px 40px;
-}
-
-.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-    color: #ffffff;
-    font-size: 36pt;
-    text-decoration: none;
-    font-family: 'Lobster';
-}
-
-.content container {
-    margin-left: 40px;
-    margin-right: 40px;
-    border-bottom: 1px solid;
-}
-
-h1, h2, h3, h4 {
-    font-family: 'Lobster', cursive;
-}
-
-.date {
-    color: #828282;
-}
-
-.save {
-    float: right;
-}
-
-.post-form textarea, .post-form input {
+    padding-left: 150px;
+    position: fixed;
     width: 100%;
+    z-index: +1;
+    display:inline-block;
+    max-height: 100px;
+}
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    color: black;
+    position: fixed;
+    font-size: 42pt;
+    text-decoration: none;
+    font-family: 'Abril Fatface', cursive;
+    max-height: 100px;
+    margin-top: -25;
+}
+@media screen and (max-width: 900px){
+    .page-header {
+        padding-left: 10px;
+     }
+}
+/* Menu bars */
+ /* Add a background color to the top navigation */
+.topnav {
+  overflow: hidden;
 }
 
-.top-menu, .top-menu:hover, .top-menu:visited {
-    color: #ffffff;
+.topnav a {
+  float: right;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.topnav a:hover {
+  color: white;
+}
+
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
     float: right;
-    font-size: 26pt;
-    margin-right: 20px;
+    display: block;
+  }
 }
 
+@media screen and (max-width: 800px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+/*
+* — Posts —
+*/
+.content-container {
+    position:relative;
+    display:inline-block;
+    padding-left: 150px;
+    padding-right: 150px;
+    }
+@media screen and (max-width: 800px){
+    .content-container {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
 .post {
-    margin-bottom: 70px;
-    margin-left:15px;
+    padding:20px;
+    background-color: white;
+    border: 3px solid #0A94FE;
+
 }
 
 .post h1 a, .post h1 a:visited {
     color: #000000;
     font-family: 'Lobster';
+    font-size: 24pt;
+}
+@media screen and (max-width: 800px){
+    .post h1 a{
+        font-size:24pt;
+     }
+}
+.date {
+    color: #828282;
+}
+
+.btn-container{
+  margin: auto;
+  height:44px;
+  width:166.23px;
+
+}
+/*
+* — Posts form —
+*/
+.post-form textarea{
+    height: 600px;
+    width: 1400px;
+
+}
+.save {
+    float: right;
+    padding-bottom: 10px;
+}
+.more {
+    text-align:right;
+}
+.logo {
+    position: relative;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    z-index: -1;
+    vertical-align: top;
+    width:100%;
+    height:60%;
+    padding:0;
+    margin:0;
+}
+/*
+* — Posts edit —
+*/
+.post-edit{
+    padding-top: 50px;
+    padding-bottom: 100px;
+
+}
+.post-edit button{
+   position: absolute;
+   left: 40%;
+}
+/*
+* — User login panel—
+*/
+
+.login-panel {
+    display:block;
+    margin-top: 50%;
+
+}
+/*
+* -- Post detail --
+*/
+.post-detail {
+    padding-top: 80px;
+    padding-bottom: 100px;
+    text-align: justify;
+}
+
+/*
+* -- Post draft list --
+*/
+.post-draft-list {
+    display: inline-block;
+    position:relative;
+    top: -600;
+
 }

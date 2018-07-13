@@ -1,14 +1,36 @@
 {% extends 'blog/base.html' %}
+{% load my_tags %}
+
     {% block content %}
+     <div>
+         <img class="logo" src="https://cpb-us-e1.wpmucdn.com/blogs.providence.edu/dist/c/16/files/2017/08/Clara-Story-1-rvajsd.jpg">
+     </div>
+    <!--
+    <br>
+     //-->
         {% for post in posts %}
+            {% if forloop.counter|modulo:3 == 1 %}
+                <div class="row">
+            {% endif %}
+            <div class="col-md-4">
             <div class="post">
                 <div class="date">
                     published: {{ post.published_date }}
                 </div>
-                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-                <p>{{ post.text|linebreaksbr }}</p>
-
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}" class="img-responsive">
+                    {% endif %}
+                <h1 style="text-align:center"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                <p>{{ post.text|truncatewords:50|linebreaksbr }}</p>
+                <div class="more">
+                <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-default" role="button">Czytaj więcej</a>
+                </div>
             </div>
+            </div>
+            {% if forloop.last or forloop.counter|modulo:3 == 0 %}
+                </div>
+                <br>
+            {% endif %}
         {% endfor %}
     {% endblock %}
 
