@@ -1,20 +1,14 @@
-<html>
-    <head>
-        <title>First step</title>
-    </head>
-    <body>
-        <div>
-            <h1>Nagłówek h1</h1>
-        </div>
-        <h2>Nagłówek h2</h2>
-        <div>
-            <h3>Nagłówek h3</h3>
-            <em>wyroznienie tekstu em</em>
-        </div>
-        <strong>wyroznienie strong</strong>
-        <br>
+{% extends 'blog/base.html' %}
+    {% block content %}
+        {% for post in posts %}
+            <div class="post">
+                <div class="date">
+                    published: {{ post.published_date }}
+                </div>
+                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaksbr }}</p>
 
-        <p>Hi there!</p>
-        <p>It works!</p>
-    </body>
-</html>
+            </div>
+        {% endfor %}
+    {% endblock %}
+
