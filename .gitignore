@@ -1,8 +1,9 @@
 *.pyc
 *~
+migrations/
 __pycache__
 mysite/__pycache__/
-blog/__pycache__/git status
+blog/__pycache__/
 .env
 .venv
 env/
