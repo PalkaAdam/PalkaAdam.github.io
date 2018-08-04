@@ -3,13 +3,18 @@ from django.utils import timezone
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 from .models import Post
-from .forms import PostForm
+from .forms import PostForm, ContactForm
 
 
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(posts, 6)
+    posts = paginator.get_page(page)
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 
@@ -21,6 +26,27 @@ def post_detail(request, pk):
 def base(request):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/base.html', {'post': post})
+
+
+def contact(request):
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
+            try:
+                send_mail(subject, message, from_email, ['admin@example.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('success')
+    return render(request, "blog/contact.html", {'form': form})
+
+
+def about(request):
+    return render(request, 'blog/about.html')
 
 
 @login_required

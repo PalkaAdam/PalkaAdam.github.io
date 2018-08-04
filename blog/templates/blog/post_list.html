@@ -12,7 +12,7 @@
             {% if forloop.counter|modulo:3 == 1 %}
                 <div class="row">
             {% endif %}
-            <div class="col-md-4">
+            <div class="col-sm-4, col-md-5, col-lg-4">
             <div class="post">
                 <div class="date">
                     published: {{ post.published_date }}
@@ -21,7 +21,7 @@
                         <img src="{{ post.image.url }}" class="img-responsive">
                     {% endif %}
                 <h1 style="text-align:center"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-                <p>{{ post.text|truncatewords:50|linebreaksbr }}</p>
+                <p>{{ post.text|truncatechars:250|linebreaksbr }}</p>
                 <div class="more">
                 <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-default" role="button">Czytaj więcej</a>
                 </div>
@@ -32,5 +32,40 @@
                 <br>
             {% endif %}
         {% endfor %}
+<!-- Pagination -->
+<nav aria-label="Page navigation">
+    {% if posts.has_other_pages %}
+        <ul class="pagination justify-content-center">
+        {% if posts.has_previous %}
+            <li class="page-item">
+                <a  class="page-link" href="?page={{ posts.previous_page_number }}">&laquo;</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled"><span>&laquo;</span></li>
+        {% endif %}
+        {% for i in posts.paginator.page_range %}
+            {% if posts.number == i %}
+                <li  class="page-item active">
+                    <span>{{ i }}
+                        <span class="sr-only">(current)</span>
+                    </span>
+                </li>
+            {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+        {% if posts.has_next %}
+            <li class="page-item">
+                 <a class="page-link" href="?page={{ posts.next_page_number }}">&raquo;</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled"><span>&raquo;</span></li>
+        {% endif %}
+        </ul>
+    {% endif %}
+</nav>
+
     {% endblock %}
 
