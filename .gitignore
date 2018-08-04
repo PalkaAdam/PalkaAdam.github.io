@@ -1,9 +1,17 @@
 *.pyc
 *~
 __pycache__
-myvenv/
+mysite/__pycache__/
+blog/__pycache__/git status
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 db.sqlite3
 /static
 .DS_Store
-/media_cdn
+media_cdn/
 .idea
