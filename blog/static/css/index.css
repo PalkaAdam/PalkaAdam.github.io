@@ -6,7 +6,7 @@ p{
 * — page header and menu bars —
 */
 .page-header {
-    background-color: #0A94FE;
+    background-color: #007bff;
     margin-top: 0;
     padding-left: 150px;
     position: fixed;
@@ -48,6 +48,7 @@ p{
 
 .topnav a:hover {
   color: white;
+  text-decoration: none;
 }
 
 
@@ -61,10 +62,9 @@ p{
     float: right;
     display: block;
   }
-}
-
-@media screen and (max-width: 800px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -84,12 +84,6 @@ p{
     display:inline-block;
     padding-left: 10vw;
     padding-right: 10vw;
-    }
-@media screen and (max-width: 800px){
-    .content-container {
-        padding-left: 50px;
-        padding-right: 50px;
-    }
 }
 .post {
     padding:20px;
@@ -98,13 +92,9 @@ p{
 
 .post h1 a, .post h1 a:visited {
     color: #000000;
-    font-family: 'Lobster';
+    font-family: 'Abril Fatface', cursive;;
     font-size: 24pt;
 }
-@media screen and (max-width: 800px){
-    .post h1 a{
-        font-size:24pt;
-     }
 }
 .date {
     color: #828282;
@@ -190,19 +180,15 @@ p{
     min-height: 100vh;
     padding-top: 10vh;
     width: 100%;
-}
-.page textarea {
-    min-width: 500px;
-    min-height: 350px;
-}
 
-
+}
 .page p {
     max-width: 80%;
     text-align: justify;
+    font-size: 16pt;
 }
 .page h1 {
-    font-size: 24pt;
+    font-size: 28pt;
     font-weight: bold;
 }
 .about {
@@ -213,12 +199,79 @@ p{
 .about h1 {
     font-weight: bold;
     font-size: 24pt;
-
-/* Pagination */
-
-.pagination {
-    align:center;
 }
 nav {
+    font-size: 16pt;
+}
+.send {
+    font-size:14pt;
+}
+#contact {
+    display: inline-block;
+    float; left;
+    height: 60vh;
+    width: 35vw;
     font-size: 14pt;
+    font-size: Verdana;
+    padding-top: 10vh;
+    padding-bot: 5vh;
+}
+#contact p {
+    font-size: 16pt;
+
+}
+#contact h1 {
+    font-size: 22pt;
+    font-weight: bold;
+
+}
+#map {
+    display: inline-block;
+    padding-top: 10vh;
+    min-width: 40vw;
+    padding-left: 2vw;
+
+}
+iframe {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    max-height: 60vh;
+
+}
+#contact textarea {
+    max-width: 100%;
+    min-width: 220px;
+    max-height: 30vh;
+    min-height: 25vh;
+    resize: none;
+
+}
+@media screen and (max-width: 800px){
+  .post h1 a{
+     font-size:24pt;
+
+   }
+  #contact p {
+    font-size: 12pt;
+
+  }
+  #contact h1 {
+    font-size: 18pt;
+    font-weight: bold;
+    }
+}
+@media screen and (max-width: 600px){
+  .post h1 a{
+     font-size:18pt;
+
+   }
+  #contact p {
+    font-size: 12pt;
+
+  }
+  #contact h1 {
+    font-size: 16pt;
+    font-weight: bold;
+    }
 }

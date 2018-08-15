@@ -4,6 +4,8 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.core.mail import BadHeaderError
+from django.http import HttpResponse
 
 from .models import Post
 from .forms import PostForm, ContactForm
@@ -31,6 +33,7 @@ def base(request):
 def contact(request):
     if request.method == 'GET':
         form = ContactForm()
+
     else:
         form = ContactForm(request.POST)
         if form.is_valid():

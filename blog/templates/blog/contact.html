@@ -1,15 +1,21 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<div class="page">
-<h1>Contact Us</h1>
-    <br><br>
-<form method="post">
-    {% csrf_token %}
-    <div class="test">{{ form.as_p }}</div>
-    <div class="form-actions">
-      <button type="submit">Send</button>
-    </div>
-</form>
+<div id="contact">
+        <h1>Contact Us</h1>
+        {% csrf_token %}
+        <div class="fieldWrapper">
+            <p>Email:</p> {{ form.from_email }}
+            <p>Subject:</p> {{ form.subject}}
+            <p>Message:</p> {{ form.message}}
+        </div>
+        <button class="send" type="submit">Send</button>
 </div>
+<div id="map">
+    <iframe frameborder="0" src=
+        "https://www.google.com/maps/embed/v1/place?zoom=15&center=52.2297,21.0122&key=AIzaSyD0fP9jGUEf8Z-DID0NKzMMOpHrX3HfL_I&q=52.230054, 21.011317"
+         >
+    </iframe>
+</div>
+
 {% endblock %}
